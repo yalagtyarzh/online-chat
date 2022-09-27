@@ -13,6 +13,20 @@ type Config struct {
 	PrettyLog bool   `env:"PRETTY_LOG" envDefault:"false"`
 	Bind      string `env:"BIND" envDefault:":8080"`
 	ProbeBind string `env:"PROBE_BIND" envDefault:":9091"`
+	Postgres  struct {
+		Username string `env:"POSTGRES_USERNAME" envDefault:"default"`
+		Password string `env:"POSTGRES_PASSWORD" envDefault:""`
+		Database string `env:"POSTGRES_DATABASE" envDefault:"chat"`
+		Host     string `env:"POSTGRES_PORT" envDefault:"localhost:5432"`
+	}
+	Redis struct {
+		Addr     string `env:"REDIS_ADDRESS" envDefault:"localhost:6379"`
+		Password string `env:"REDIS_PASSWORD" envDefault:""`
+	}
+	JWT struct {
+		Issuer string `env:"JWT_ISSUER" envDefault:"go-chat"`
+		Secret string `env:"JWT_SECRET" envDefault:"secret"`
+	}
 }
 
 var cfg *Config
